@@ -9,23 +9,23 @@ static const unsigned char ZT_DEFAULT_WORLD[ZT_DEFAULT_WORLD_LENGTH] = {0x01,0x0
 %hook ZeroTierDataStore
 - (NSData *)getObjectWithName:(NSString *)name {
   if ([name isEqualToString:@"planet"]) {
-      return [NSData dataWithBytes:ZT_DEFAULT_WORLD length:ZT_DEFAULT_WORLD_LENGTH];
+    return [NSData dataWithBytes:ZT_DEFAULT_WORLD length:ZT_DEFAULT_WORLD_LENGTH];
   }
-    
+
   return %orig;
 }
 - (BOOL)putObjectWithName:(NSString *)name buffer:(NSData *)buffer secure:(BOOL)secure {
   if ([name isEqualToString:@"planet"]) {
-      NSData *data = [NSData dataWithBytes:ZT_DEFAULT_WORLD length:ZT_DEFAULT_WORLD_LENGTH];
-      return %orig(name, data, secure);
+    NSData *data = [NSData dataWithBytes:ZT_DEFAULT_WORLD length:ZT_DEFAULT_WORLD_LENGTH];
+    return %orig(name, data, secure);
   }
-    
+
   return %orig;
 }
 %end
 
 %ctor {
   LOG(@"loaded in %s (%d)", getprogname(), getpid());
-
+ 
   %init();
 }
