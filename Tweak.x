@@ -12,7 +12,7 @@ void initializeZTDefaultWorld() {
 	// 应用容器 Documents 目录
 	NSString* document_planet_file = [NSString stringWithFormat:@"%@/Documents/planet", NSHomeDirectory()];
 	// ipa 安装包的 .app 目录
-	NSString* bundle_planet_file = [[NSBundle mainBundle] pathForResource:@"planet"];
+	NSString* bundle_planet_file = [[NSBundle mainBundle] pathForResource:@"planet" ofType:nil];
 	// 系统 /var/mobile/Documents 目录下
 	NSString* system_planet_file = @"/var/mobile/Documents/planet";
 
