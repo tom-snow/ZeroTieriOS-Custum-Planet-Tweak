@@ -50,6 +50,7 @@ jobs:
         export BASEDIR="$(pwd)"
         export THEOS="${BASEDIR}/theos"
         make clean
+        rm -rf ./packages/
         THEOS_PACKAGE_SCHEME=rootless make package
 
     - name: Upload rootless package
